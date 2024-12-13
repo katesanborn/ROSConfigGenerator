@@ -48,8 +48,6 @@ COPY /config-data/requirements.txt /root/requirements.txt
 # Default command
 CMD ["/bin/bash", "-c", "pip install -r /root/requirements.txt && \
   source /ros_entrypoint.sh && \
-  source /root/catkin_ws/devel/setup.bash && \
-  catkin_make && \
   roscore & sleep 5 && \
   catkin_make && \
   source /root/catkin_ws/devel/setup.bash && \
