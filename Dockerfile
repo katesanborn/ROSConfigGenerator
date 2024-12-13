@@ -56,11 +56,7 @@ CMD ["/bin/bash", "-c", "pip install -r /root/requirements.txt && \
   source /root/catkin_ws/devel/setup.bash && \
   catkin_make && \
   source /root/catkin_ws/devel/setup.bash && \
-  rospack profile && \
-  rospack list && \
-  ls /root/catkin_ws/src && \
   roscore & sleep 5 && \
-  echo 'ALMOST THERE' && \
   catkin_make && \
   source /root/catkin_ws/devel/setup.bash && \
   python3 /root/get_config.py"]
