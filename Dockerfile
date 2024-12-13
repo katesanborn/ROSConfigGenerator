@@ -8,8 +8,6 @@ SHELL ["/bin/bash", "-c"]
 RUN apt-get update && apt-get install -y \
     git \
     python3-pip \
-    python3-rosdep \
-    python3-catkin-tools \
     && rm -rf /var/lib/apt/lists/*
 
 # create the catkin workspace and set working directory
