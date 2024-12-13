@@ -4,13 +4,6 @@ FROM ros:noetic-robot
 # change the default shell to bash
 SHELL ["/bin/bash", "-c"]
 
-# set up environment
-RUN echo "source /opt/ros/noetic/setup.bash" >> /etc/bash.bashrc
-
-# create the catkin workspace and set working directory
-RUN mkdir -p /root/catkin_ws/src
-WORKDIR /root/catkin_ws
-
 # install necessary dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -18,6 +11,9 @@ RUN apt-get update && apt-get install -y \
     python3-rosdep \
     python3-catkin-tools \
     && rm -rf /var/lib/apt/lists/*
+
+# create the catkin workspace and set working directory
+RUN mkdir -p /root/catkin_ws/src
 
 # clone the necessary repositories
 WORKDIR /root/catkin_ws/src
@@ -30,7 +26,6 @@ RUN printf '#!/bin/bash\nset -e\nwhile read -r repo; do\n  git clone "$repo"\ndo
     chmod +x /root/catkin_ws/src/clone_repos.sh
 
 # Run the cloning script
-WORKDIR /root/catkin_ws/src
 RUN /root/catkin_ws/src/clone_repos.sh
 
 # build workspace after cloning
