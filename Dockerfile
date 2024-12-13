@@ -9,9 +9,6 @@ SHELL ["/bin/bash", "-c"]
 # set up environment
 RUN echo "source /opt/ros/noetic/setup.bash" >> /etc/bash.bashrc
 
-# create SSH directory
-# RUN mkdir /var/run/sshd
-
 # create the catkin workspace and set working directory
 RUN mkdir -p /root/catkin_ws/src
 WORKDIR /root/catkin_ws
@@ -49,16 +46,12 @@ RUN /root/catkin_ws/src/clone_repos.sh
 WORKDIR /root/catkin_ws
 RUN source /ros_entrypoint.sh && catkin_make && source devel/setup.bash
 
-
 COPY get_config.py /root/get_config.py
 COPY /config-data/requirements.txt /root/requirements.txt
 
-# RUN python3 -m pip install --upgrade pip
-# RUN python3 -m pip list
 
 # Default command
-CMD ["/bin/bash", "-c", "/root/catkin_ws/src/clone_repos.sh && \
-  pip install -r /root/requirements.txt && \
+CMD ["/bin/bash", "-c", "pip install -r /root/requirements.txt && \
   source /ros_entrypoint.sh && \
   source /root/catkin_ws/devel/setup.bash && \
   catkin_make && \
