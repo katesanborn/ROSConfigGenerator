@@ -19,10 +19,6 @@ RUN apt-get update && apt-get install -y \
     python3-catkin-tools \
     && rm -rf /var/lib/apt/lists/*
 
-
-# install python packages
-RUN pip3 install rospkg catkin_pkg
-
 # clone the necessary repositories
 WORKDIR /root/catkin_ws/src
 
@@ -49,6 +45,5 @@ COPY /config-data/requirements.txt /root/requirements.txt
 CMD ["/bin/bash", "-c", "pip install -r /root/requirements.txt && \
   source /ros_entrypoint.sh && \
   roscore & sleep 5 && \
-  catkin_make && \
   source /root/catkin_ws/devel/setup.bash && \
   python3 /root/get_config.py"]
