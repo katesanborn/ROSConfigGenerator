@@ -1,0 +1,558 @@
+[
+    {
+        "package": "cbf",
+        "nodes": [
+            {
+                "node": "cbf",
+                "publishers": [
+                    "/cbf/cbf_debug",
+                    "/cmd_accel"
+                ],
+                "subscribers": [
+                    "/accel",
+                    "/car/hud/mini_car_enable",
+                    "/cmd_accel_pre",
+                    "/lead_dist",
+                    "/rel_vel",
+                    "/vel"
+                ]
+            }
+        ],
+        "launch_files": []
+    },
+    {
+        "package": "can_to_ros",
+        "nodes": [
+            {
+                "node": "subs",
+                "publishers": [
+                    "/acc/acc_btns",
+                    "/acc/acc_btns_int",
+                    "/acc/cruise_state",
+                    "/acc/cruise_state_int",
+                    "/acc/mini_car",
+                    "/acc/set_distance",
+                    "/acc/set_speed",
+                    "/acc/state_signal",
+                    "/accel_pedal_driver",
+                    "/brake_torque",
+                    "/hud_states",
+                    "/steering_angle",
+                    "/vel",
+                    "/wheel_torque"
+                ],
+                "subscribers": [
+                    "/car/can/raw"
+                ]
+            },
+            {
+                "node": "node_status.py",
+                "publishers": [
+                    "/cmd_accel",
+                    "/timed_accel"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "topic_check.py",
+                "publishers": [],
+                "subscribers": [
+                    "/car/libpanda/controls_allowed"
+                ]
+            },
+            {
+                "node": "realtime_publishing",
+                "publishers": [
+                    "/raw_data"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "cmd_accel_decel",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "listener.py",
+                "publishers": [
+                    "/space_gap"
+                ],
+                "subscribers": [
+                    "/ego_dist_traveled",
+                    "/ghost_dist_traveled",
+                    "/relv",
+                    "/vehicle/vel"
+                ]
+            },
+            {
+                "node": "publish_csv",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "saveparam.py",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "publishCommandsFS",
+                "publishers": [
+                    "/car/cruise/accel_input"
+                ],
+                "subscribers": [
+                    "/cmd_accel"
+                ]
+            },
+            {
+                "node": "liveRadar.py",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "kalmanTracking.py",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "commandDuration",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "gpsfix",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "cbf_smoother",
+                "publishers": [
+                    "/cmd_accel_cbf",
+                    "/cmd_accel_cbf_raw"
+                ],
+                "subscribers": [
+                    "/car/hud/mini_car_enable",
+                    "/cmd_accel_pre",
+                    "/lead_dist_869",
+                    "/rel_vel_869",
+                    "/vel"
+                ]
+            },
+            {
+                "node": "selector.py",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "subs_fs",
+                "publishers": [
+                    "/accel",
+                    "/highbeams",
+                    "/lead_dist_869",
+                    "/msg_467",
+                    "/msg_921",
+                    "/rel_vel_869",
+                    "/steering_angle",
+                    "/track_a0",
+                    "/track_a1",
+                    "/track_a10",
+                    "/track_a11",
+                    "/track_a12",
+                    "/track_a13",
+                    "/track_a14",
+                    "/track_a15",
+                    "/track_a2",
+                    "/track_a3",
+                    "/track_a4",
+                    "/track_a5",
+                    "/track_a6",
+                    "/track_a7",
+                    "/track_a8",
+                    "/track_a9",
+                    "/vel"
+                ],
+                "subscribers": [
+                    "/car/can/raw"
+                ]
+            },
+            {
+                "node": "publishCommands",
+                "publishers": [
+                    "/car/cruise/accel_input",
+                    "/car/cruise/steer_input"
+                ],
+                "subscribers": [
+                    "/cmd_accel_safe",
+                    "/timed_accel"
+                ]
+            },
+            {
+                "node": "lead_info",
+                "publishers": [
+                    "/lead_dist",
+                    "/rel_vel",
+                    "/rel_vel_old"
+                ],
+                "subscribers": [
+                    "/lead_dist_869",
+                    "/rel_vel_869",
+                    "/track_a0",
+                    "/track_a1",
+                    "/track_a10",
+                    "/track_a11",
+                    "/track_a12",
+                    "/track_a13",
+                    "/track_a14",
+                    "/track_a15",
+                    "/track_a2",
+                    "/track_a3",
+                    "/track_a4",
+                    "/track_a5",
+                    "/track_a6",
+                    "/track_a7",
+                    "/track_a8",
+                    "/track_a9"
+                ]
+            },
+            {
+                "node": "nissan_target_speed_to_acc_buttons",
+                "publishers": [
+                    "/car/cruise/cmd_btn"
+                ],
+                "subscribers": [
+                    "/acc/set_distance",
+                    "/acc/set_speed",
+                    "/car/libpanda/busy_sending_button_press",
+                    "/car/libpanda/controls_allowed",
+                    "/target_gap_setting",
+                    "/target_speed_setting"
+                ]
+            },
+            {
+                "node": "simple_mini_car_from_lead_distance",
+                "publishers": [
+                    "/car/hud/mini_car_enable"
+                ],
+                "subscribers": [
+                    "/lead_dist_869"
+                ]
+            },
+            {
+                "node": "cruise_start_safety_check",
+                "publishers": [
+                    "/car/hud/cruise_cancel_request"
+                ],
+                "subscribers": [
+                    "/car/hud/mini_car_enable",
+                    "/car/libpanda/controls_allowed",
+                    "/cmd_accel"
+                ]
+            },
+            {
+                "node": "subs_fs_test",
+                "publishers": [
+                    "/acc/distance_setting",
+                    "/acc/set_speed",
+                    "/accel",
+                    "/cruise_state",
+                    "/highbeams",
+                    "/lead_dist",
+                    "/pcm_cruise_2",
+                    "/rel_vel",
+                    "/steering_angle",
+                    "/track_a0",
+                    "/track_a1",
+                    "/track_a10",
+                    "/track_a11",
+                    "/track_a12",
+                    "/track_a13",
+                    "/track_a14",
+                    "/track_a15",
+                    "/track_a2",
+                    "/track_a3",
+                    "/track_a4",
+                    "/track_a5",
+                    "/track_a6",
+                    "/track_a7",
+                    "/track_a8",
+                    "/track_a9",
+                    "/vel"
+                ],
+                "subscribers": [
+                    "/car/can/raw"
+                ]
+            },
+            {
+                "node": "can_coach.py",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "can_coach_subs.py",
+                "publishers": null,
+                "subscribers": null
+            }
+        ],
+        "launch_files": [
+            {
+                "launch_file": "rl_cruise_accel_planner_readonly.launch",
+                "relative_path": "launch/rl_cruise_accel_planner_readonly.launch"
+            },
+            {
+                "launch_file": "explicit_cruise_planner_readonly.launch",
+                "relative_path": "launch/explicit_cruise_planner_readonly.launch"
+            },
+            {
+                "launch_file": "followerstopper_test.launch",
+                "relative_path": "launch/followerstopper_test.launch"
+            },
+            {
+                "launch_file": "acc_settings.launch",
+                "relative_path": "launch/acc_settings.launch"
+            },
+            {
+                "launch_file": "accel_commands.launch",
+                "relative_path": "launch/accel_commands.launch"
+            },
+            {
+                "launch_file": "cbftest_v2.launch",
+                "relative_path": "launch/cbftest_v2.launch"
+            },
+            {
+                "launch_file": "acc_settings_readonly.launch",
+                "relative_path": "launch/acc_settings_readonly.launch"
+            },
+            {
+                "launch_file": "delay_brake_test.launch",
+                "relative_path": "launch/delay_brake_test.launch"
+            },
+            {
+                "launch_file": "cbftest_with_error.launch",
+                "relative_path": "launch/cbftest_with_error.launch"
+            },
+            {
+                "launch_file": "cbftest.launch",
+                "relative_path": "launch/cbftest.launch"
+            },
+            {
+                "launch_file": "toyota_interface.launch",
+                "relative_path": "launch/toyota_interface.launch"
+            },
+            {
+                "launch_file": "ghost_mode.launch",
+                "relative_path": "launch/ghost_mode.launch"
+            },
+            {
+                "launch_file": "nissan_interface.launch",
+                "relative_path": "launch/nissan_interface.launch"
+            },
+            {
+                "launch_file": "piping.launch",
+                "relative_path": "launch/piping.launch"
+            },
+            {
+                "launch_file": "real_vehicle_test_B.launch",
+                "relative_path": "launch/real_vehicle_test_B.launch"
+            },
+            {
+                "launch_file": "vehicle_control_1.launch",
+                "relative_path": "launch/vehicle_control_1.launch"
+            },
+            {
+                "launch_file": "vehicle_control_integrated.launch",
+                "relative_path": "launch/vehicle_control_integrated.launch"
+            },
+            {
+                "launch_file": "rosbag_replay.launch",
+                "relative_path": "launch/rosbag_replay.launch"
+            },
+            {
+                "launch_file": "rl_cruise_noplanner_readonly.launch",
+                "relative_path": "launch/rl_cruise_noplanner_readonly.launch"
+            },
+            {
+                "launch_file": "cbftest_simulink.launch",
+                "relative_path": "launch/cbftest_simulink.launch"
+            },
+            {
+                "launch_file": "start_can_decoding.launch",
+                "relative_path": "launch/start_can_decoding.launch"
+            },
+            {
+                "launch_file": "vanilla_interface.launch",
+                "relative_path": "launch/vanilla_interface.launch"
+            },
+            {
+                "launch_file": "safety_checks.launch",
+                "relative_path": "launch/safety_checks.launch"
+            },
+            {
+                "launch_file": "time_to_collision_test.launch",
+                "relative_path": "launch/time_to_collision_test.launch"
+            },
+            {
+                "launch_file": "publish_can_msg.launch",
+                "relative_path": "launch/publish_can_msg.launch"
+            },
+            {
+                "launch_file": "vehicle_control_integrated_cbf.launch",
+                "relative_path": "launch/vehicle_control_integrated_cbf.launch"
+            },
+            {
+                "launch_file": "cbf_vsl.launch",
+                "relative_path": "launch/cbf_vsl.launch"
+            },
+            {
+                "launch_file": "rl_cruise_hybrid_noplanner_readonly.launch",
+                "relative_path": "launch/rl_cruise_hybrid_noplanner_readonly.launch"
+            },
+            {
+                "launch_file": "pid_controller.launch",
+                "relative_path": "launch/pid_controller.launch"
+            },
+            {
+                "launch_file": "cbf_accel_check.launch",
+                "relative_path": "launch/cbf_accel_check.launch"
+            },
+            {
+                "launch_file": "rviz_live.launch",
+                "relative_path": "launch/rviz_live.launch"
+            },
+            {
+                "launch_file": "init_ghost_mode.launch",
+                "relative_path": "launch/init_ghost_mode.launch"
+            },
+            {
+                "launch_file": "testfile2.launch",
+                "relative_path": "launch/testfile2.launch"
+            },
+            {
+                "launch_file": "cancoach_experiment_starter.launch",
+                "relative_path": "launch/cancoach_experiment_starter.launch"
+            },
+            {
+                "launch_file": "unit_test_setpoint.launch",
+                "relative_path": "launch/unit_test_setpoint.launch"
+            },
+            {
+                "launch_file": "explicitaccel.launch",
+                "relative_path": "launch/explicitaccel.launch"
+            },
+            {
+                "launch_file": "testfile.launch",
+                "relative_path": "launch/testfile.launch"
+            },
+            {
+                "launch_file": "rl_cruise_planner_readonly.launch",
+                "relative_path": "launch/rl_cruise_planner_readonly.launch"
+            },
+            {
+                "launch_file": "safety_checks_no_cut_in.launch",
+                "relative_path": "launch/safety_checks_no_cut_in.launch"
+            },
+            {
+                "launch_file": "vehicle_control_integrated_cbf_v2.launch",
+                "relative_path": "launch/vehicle_control_integrated_cbf_v2.launch"
+            },
+            {
+                "launch_file": "accel_decel_cmds.launch",
+                "relative_path": "launch/accel_decel_cmds.launch"
+            },
+            {
+                "launch_file": "explicitaccel_microaccel_readonly.launch",
+                "relative_path": "launch/explicitaccel_microaccel_readonly.launch"
+            },
+            {
+                "launch_file": "vehicle_control_integrated_cbf_vsl.launch",
+                "relative_path": "launch/vehicle_control_integrated_cbf_vsl.launch"
+            },
+            {
+                "launch_file": "vehicle_interface.launch",
+                "relative_path": "launch/vehicle_interface.launch"
+            },
+            {
+                "launch_file": "vehicle_control_integrated_time_to_collision.launch",
+                "relative_path": "launch/vehicle_control_integrated_time_to_collision.launch"
+            },
+            {
+                "launch_file": "robotviz.launch",
+                "relative_path": "launch/robotviz.launch"
+            },
+            {
+                "launch_file": "real_vehicle_test_A.launch",
+                "relative_path": "launch/real_vehicle_test_A.launch"
+            },
+            {
+                "launch_file": "vehicle_control_2.launch",
+                "relative_path": "launch/vehicle_control_2.launch"
+            },
+            {
+                "launch_file": "vehicle_control_integrated_cbf_with_error.launch",
+                "relative_path": "launch/vehicle_control_integrated_cbf_with_error.launch"
+            },
+            {
+                "launch_file": "robotviz_tf.launch",
+                "relative_path": "launch/robotviz_tf.launch"
+            },
+            {
+                "launch_file": "vehicle_control_integrated_delay_brake.launch",
+                "relative_path": "launch/vehicle_control_integrated_delay_brake.launch"
+            },
+            {
+                "launch_file": "rl_cruise_hybrid_planner_readonly.launch",
+                "relative_path": "launch/rl_cruise_hybrid_planner_readonly.launch"
+            },
+            {
+                "launch_file": "vehicle_control.launch",
+                "relative_path": "launch/vehicle_control.launch"
+            },
+            {
+                "launch_file": "nissan_bare.launch",
+                "relative_path": "launch/nissan_bare.launch"
+            },
+            {
+                "launch_file": "vehicle_control_cbf.launch",
+                "relative_path": "launch/vehicle_control_cbf.launch"
+            },
+            {
+                "launch_file": "rl_blind_cruise_planner_readonly.launch",
+                "relative_path": "launch/rl_blind_cruise_planner_readonly.launch"
+            }
+        ]
+    },
+    {
+        "package": "carsimplesimulink",
+        "nodes": [
+            {
+                "node": "carsimplesimulink",
+                "publishers": [
+                    "/odom_x",
+                    "/vel_x"
+                ],
+                "subscribers": [
+                    "/cmd_accel"
+                ]
+            }
+        ],
+        "launch_files": []
+    },
+    {
+        "package": "profproject",
+        "nodes": [
+            {
+                "node": "profproject",
+                "publishers": [
+                    "/cmd_accel"
+                ],
+                "subscribers": [
+                    "/rel_vel"
+                ]
+            }
+        ],
+        "launch_files": [
+            {
+                "launch_file": "profproject.launch",
+                "relative_path": "launch/profproject.launch"
+            }
+        ]
+    }
+]

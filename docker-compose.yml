@@ -1,0 +1,8 @@
+services:
+  ros-config-generator:
+    build:
+      context: .
+    volumes:
+      - type: bind
+        source: config-data
+        target: /config-data

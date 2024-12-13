@@ -1,0 +1,4 @@
+https://github.com/jmscslgroup/can_to_ros.git
+https://github.com/jmscslgroup/profproject.git
+https://github.com/jmscslgroup/cbf.git
+https://github.com/jmscslgroup/carsimplesimulink.git
