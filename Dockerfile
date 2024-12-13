@@ -1,8 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM ros:noetic-robot
 
-ENV LD_LIBRARY_PATH=/usr/local/lib
-
 # change the default shell to bash
 SHELL ["/bin/bash", "-c"]
 
@@ -24,9 +22,6 @@ RUN apt-get update && apt-get install -y \
 
 # install python packages
 RUN pip3 install rospkg catkin_pkg
-
-# build the workspace
-RUN source /ros_entrypoint.sh && catkin_make
 
 # clone the necessary repositories
 WORKDIR /root/catkin_ws/src
@@ -55,7 +50,6 @@ CMD ["/bin/bash", "-c", "pip install -r /root/requirements.txt && \
   source /ros_entrypoint.sh && \
   source /root/catkin_ws/devel/setup.bash && \
   catkin_make && \
-  source /root/catkin_ws/devel/setup.bash && \
   roscore & sleep 5 && \
   catkin_make && \
   source /root/catkin_ws/devel/setup.bash && \
