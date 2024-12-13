@@ -18,8 +18,7 @@ WORKDIR /root/catkin_ws/src
 COPY /config-data/repos.txt /config-data/repos.txt
 
 # Create and prepare the cloning script to install ROS packages
-RUN printf '#!/bin/bash\nset -e\nwhile read -r repo; do\n  git clone "$repo"\ndone < /config-data/repos.txt\n' > /root/catkin_ws/src/clone_repos.sh && \
-    chmod +x /root/catkin_ws/src/clone_repos.sh
+COPY clone_repos.sh /root/catkin_ws/src/clone_repos.sh
 
 # Run the cloning script
 RUN /root/catkin_ws/src/clone_repos.sh

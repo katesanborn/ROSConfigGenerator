@@ -24,48 +24,13 @@
         "package": "can_to_ros",
         "nodes": [
             {
-                "node": "subs",
+                "node": "simple_mini_car_from_lead_distance",
                 "publishers": [
-                    "/acc/acc_btns",
-                    "/acc/acc_btns_int",
-                    "/acc/cruise_state",
-                    "/acc/cruise_state_int",
-                    "/acc/mini_car",
-                    "/acc/set_distance",
-                    "/acc/set_speed",
-                    "/acc/state_signal",
-                    "/accel_pedal_driver",
-                    "/brake_torque",
-                    "/hud_states",
-                    "/steering_angle",
-                    "/vel",
-                    "/wheel_torque"
+                    "/car/hud/mini_car_enable"
                 ],
                 "subscribers": [
-                    "/car/can/raw"
+                    "/lead_dist_869"
                 ]
-            },
-            {
-                "node": "node_status.py",
-                "publishers": [
-                    "/cmd_accel",
-                    "/timed_accel"
-                ],
-                "subscribers": []
-            },
-            {
-                "node": "topic_check.py",
-                "publishers": [],
-                "subscribers": [
-                    "/car/libpanda/controls_allowed"
-                ]
-            },
-            {
-                "node": "realtime_publishing",
-                "publishers": [
-                    "/raw_data"
-                ],
-                "subscribers": []
             },
             {
                 "node": "cmd_accel_decel",
@@ -73,106 +38,14 @@
                 "subscribers": null
             },
             {
-                "node": "listener.py",
-                "publishers": [
-                    "/space_gap"
-                ],
-                "subscribers": [
-                    "/ego_dist_traveled",
-                    "/ghost_dist_traveled",
-                    "/relv",
-                    "/vehicle/vel"
-                ]
-            },
-            {
-                "node": "publish_csv",
-                "publishers": null,
-                "subscribers": null
-            },
-            {
-                "node": "saveparam.py",
-                "publishers": null,
-                "subscribers": null
-            },
-            {
-                "node": "publishCommandsFS",
-                "publishers": [
-                    "/car/cruise/accel_input"
-                ],
-                "subscribers": [
-                    "/cmd_accel"
-                ]
-            },
-            {
-                "node": "liveRadar.py",
-                "publishers": null,
-                "subscribers": null
-            },
-            {
-                "node": "kalmanTracking.py",
-                "publishers": null,
-                "subscribers": null
-            },
-            {
-                "node": "commandDuration",
-                "publishers": null,
-                "subscribers": null
-            },
-            {
-                "node": "gpsfix",
-                "publishers": null,
-                "subscribers": null
-            },
-            {
-                "node": "cbf_smoother",
-                "publishers": [
-                    "/cmd_accel_cbf",
-                    "/cmd_accel_cbf_raw"
-                ],
-                "subscribers": [
-                    "/car/hud/mini_car_enable",
-                    "/cmd_accel_pre",
-                    "/lead_dist_869",
-                    "/rel_vel_869",
-                    "/vel"
-                ]
-            },
-            {
                 "node": "selector.py",
                 "publishers": null,
                 "subscribers": null
             },
             {
-                "node": "subs_fs",
-                "publishers": [
-                    "/accel",
-                    "/highbeams",
-                    "/lead_dist_869",
-                    "/msg_467",
-                    "/msg_921",
-                    "/rel_vel_869",
-                    "/steering_angle",
-                    "/track_a0",
-                    "/track_a1",
-                    "/track_a10",
-                    "/track_a11",
-                    "/track_a12",
-                    "/track_a13",
-                    "/track_a14",
-                    "/track_a15",
-                    "/track_a2",
-                    "/track_a3",
-                    "/track_a4",
-                    "/track_a5",
-                    "/track_a6",
-                    "/track_a7",
-                    "/track_a8",
-                    "/track_a9",
-                    "/vel"
-                ],
-                "subscribers": [
-                    "/car/can/raw"
-                ]
+                "node": "can_coach_subs.py",
+                "publishers": null,
+                "subscribers": null
             },
             {
                 "node": "publishCommands",
@@ -183,6 +56,23 @@
                 "subscribers": [
                     "/cmd_accel_safe",
                     "/timed_accel"
+                ]
+            },
+            {
+                "node": "saveparam.py",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "can_coach.py",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "topic_check.py",
+                "publishers": [],
+                "subscribers": [
+                    "/car/libpanda/controls_allowed"
                 ]
             },
             {
@@ -211,40 +101,6 @@
                     "/track_a7",
                     "/track_a8",
                     "/track_a9"
-                ]
-            },
-            {
-                "node": "nissan_target_speed_to_acc_buttons",
-                "publishers": [
-                    "/car/cruise/cmd_btn"
-                ],
-                "subscribers": [
-                    "/acc/set_distance",
-                    "/acc/set_speed",
-                    "/car/libpanda/busy_sending_button_press",
-                    "/car/libpanda/controls_allowed",
-                    "/target_gap_setting",
-                    "/target_speed_setting"
-                ]
-            },
-            {
-                "node": "simple_mini_car_from_lead_distance",
-                "publishers": [
-                    "/car/hud/mini_car_enable"
-                ],
-                "subscribers": [
-                    "/lead_dist_869"
-                ]
-            },
-            {
-                "node": "cruise_start_safety_check",
-                "publishers": [
-                    "/car/hud/cruise_cancel_request"
-                ],
-                "subscribers": [
-                    "/car/hud/mini_car_enable",
-                    "/car/libpanda/controls_allowed",
-                    "/cmd_accel"
                 ]
             },
             {
@@ -282,12 +138,156 @@
                 ]
             },
             {
-                "node": "can_coach.py",
+                "node": "cbf_smoother",
+                "publishers": [
+                    "/cmd_accel_cbf",
+                    "/cmd_accel_cbf_raw"
+                ],
+                "subscribers": [
+                    "/car/hud/mini_car_enable",
+                    "/cmd_accel_pre",
+                    "/lead_dist_869",
+                    "/rel_vel_869",
+                    "/vel"
+                ]
+            },
+            {
+                "node": "realtime_publishing",
+                "publishers": [
+                    "/raw_data"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "liveRadar.py",
                 "publishers": null,
                 "subscribers": null
             },
             {
-                "node": "can_coach_subs.py",
+                "node": "listener.py",
+                "publishers": [
+                    "/space_gap"
+                ],
+                "subscribers": [
+                    "/ego_dist_traveled",
+                    "/ghost_dist_traveled",
+                    "/relv",
+                    "/vehicle/vel"
+                ]
+            },
+            {
+                "node": "gpsfix",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "nissan_target_speed_to_acc_buttons",
+                "publishers": [
+                    "/car/cruise/cmd_btn"
+                ],
+                "subscribers": [
+                    "/acc/set_distance",
+                    "/acc/set_speed",
+                    "/car/libpanda/busy_sending_button_press",
+                    "/car/libpanda/controls_allowed",
+                    "/target_gap_setting",
+                    "/target_speed_setting"
+                ]
+            },
+            {
+                "node": "cruise_start_safety_check",
+                "publishers": [
+                    "/car/hud/cruise_cancel_request"
+                ],
+                "subscribers": [
+                    "/car/hud/mini_car_enable",
+                    "/car/libpanda/controls_allowed",
+                    "/cmd_accel"
+                ]
+            },
+            {
+                "node": "node_status.py",
+                "publishers": [
+                    "/cmd_accel",
+                    "/timed_accel"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "publish_csv",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "publishCommandsFS",
+                "publishers": [
+                    "/car/cruise/accel_input"
+                ],
+                "subscribers": [
+                    "/cmd_accel"
+                ]
+            },
+            {
+                "node": "commandDuration",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "subs_fs",
+                "publishers": [
+                    "/accel",
+                    "/highbeams",
+                    "/lead_dist_869",
+                    "/msg_467",
+                    "/msg_921",
+                    "/rel_vel_869",
+                    "/steering_angle",
+                    "/track_a0",
+                    "/track_a1",
+                    "/track_a10",
+                    "/track_a11",
+                    "/track_a12",
+                    "/track_a13",
+                    "/track_a14",
+                    "/track_a15",
+                    "/track_a2",
+                    "/track_a3",
+                    "/track_a4",
+                    "/track_a5",
+                    "/track_a6",
+                    "/track_a7",
+                    "/track_a8",
+                    "/track_a9",
+                    "/vel"
+                ],
+                "subscribers": [
+                    "/car/can/raw"
+                ]
+            },
+            {
+                "node": "subs",
+                "publishers": [
+                    "/acc/acc_btns",
+                    "/acc/acc_btns_int",
+                    "/acc/cruise_state",
+                    "/acc/cruise_state_int",
+                    "/acc/mini_car",
+                    "/acc/set_distance",
+                    "/acc/set_speed",
+                    "/acc/state_signal",
+                    "/accel_pedal_driver",
+                    "/brake_torque",
+                    "/hud_states",
+                    "/steering_angle",
+                    "/vel",
+                    "/wheel_torque"
+                ],
+                "subscribers": [
+                    "/car/can/raw"
+                ]
+            },
+            {
+                "node": "kalmanTracking.py",
                 "publishers": null,
                 "subscribers": null
             }
