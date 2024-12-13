@@ -37,13 +37,13 @@ RUN /root/catkin_ws/src/clone_repos.sh
 WORKDIR /root/catkin_ws
 RUN source /ros_entrypoint.sh && catkin_make && source devel/setup.bash
 
-COPY get_config.py /root/get_config.py
 COPY /config-data/requirements.txt /root/requirements.txt
+RUN pip install -r /root/requirements.txt
 
+COPY get_config.py /root/get_config.py
 
 # Default command
-CMD ["/bin/bash", "-c", "pip install -r /root/requirements.txt && \
-  source /ros_entrypoint.sh && \
+CMD ["/bin/bash", "-c", "source /ros_entrypoint.sh && \
   roscore & sleep 5 && \
   source /root/catkin_ws/devel/setup.bash && \
   python3 /root/get_config.py"]
