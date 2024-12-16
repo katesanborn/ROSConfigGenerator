@@ -10,7 +10,13 @@ from catkin_pkg import workspaces
 import json
 import roslaunch
 
-def get_all_packages():
+def get_all_packages() -> list:
+    """Returns all ROS packages that are not default
+
+    Returns:
+        list[str]: List of all ROS packages
+    """    
+    
     rospack = rospkg.RosPack()
 
     # Get all ROS packages
@@ -30,8 +36,16 @@ def get_all_packages():
 
     return non_default_packages
 
-def find_package_path(package_name):
-    """Find the path of a ROS 1 package."""
+def find_package_path(package_name: str) -> str:
+    """Gets the path of a ROS packages from its name
+
+    Args:
+        package_name (str): Name of package
+
+    Returns:
+        str: Path to package
+    """    
+    
     try:
         package_path = subprocess.check_output(['rospack', 'find', package_name]).decode().strip()
         return package_path
@@ -40,11 +54,21 @@ def find_package_path(package_name):
         return None
 
 
-def topics_from_node_package(nodeName, package):
-    nodeType = nodeName
-    nodeName , _ = os.path.splitext(nodeName)
+def topics_from_node_package(node_name: str, package: str) -> list:
+    """Finds publishers and subscribers in a given node in a given package
 
-    node = roslaunch.core.Node(package=package, node_type=nodeType, name=nodeName)
+    Args:
+        node_name (str): Name of node
+        package (str): Node package
+
+    Returns:
+        list: List of publishers and subscribers
+    """    
+    
+    node_type = node_name
+    node_name , _ = os.path.splitext(node_name)
+
+    node = roslaunch.core.Node(package=package, node_type=node_type, name=node_name)
 
     try:
         launch = roslaunch.scriptapi.ROSLaunch()
@@ -58,8 +82,8 @@ def topics_from_node_package(nodeName, package):
    
         state = master.getSystemState() 
 
-        pubs = sorted([t for t, l in state[0] if "/"+nodeName in l]) 
-        subs = sorted([t for t, l in state[1] if "/"+nodeName in l]) 
+        pubs = sorted([t for t, l in state[0] if "/"+node_name in l]) 
+        subs = sorted([t for t, l in state[1] if "/"+node_name in l]) 
 
         if "/rosout" in pubs:
             pubs.remove("/rosout")
@@ -73,7 +97,16 @@ def topics_from_node_package(nodeName, package):
         return [None, None]
 
 
-def find_nodes_in_package(pkg):
+def find_nodes_in_package(pkg: str) -> list:
+    """Returns a list of all nodes and their publishers and subscribers in a package
+
+    Args:
+        pkg (str): Name of package
+
+    Returns:
+        list: List of nodes with publishers and subscribers
+    """    
+    
     exe = []
 
     package_path = find_package_path(pkg)
@@ -115,7 +148,16 @@ def find_nodes_in_package(pkg):
 
     return nodes
 
-def find_launch_files_in_package(pkg):
+def find_launch_files_in_package(pkg: str) -> list:
+    """Returns a list of all launch files in a package
+
+    Args:
+        pkg (str): Package name
+
+    Returns:
+        list: List of all launch files and relative path in package
+    """    
+    
     launch_files = []
 
     package_path = find_package_path(pkg)
@@ -130,7 +172,13 @@ def find_launch_files_in_package(pkg):
 
     return launch_files
 
-def get_catkin_config():
+def get_catkin_config() -> list:
+    """Gets all packages, nodes, and launch files
+
+    Returns:
+        list: List of all packages and associated nodes and launch files
+    """    
+    
     packages = get_all_packages()
     pkg_out = []
 
