@@ -1,4 +1,6 @@
 https://github.com/jmscslgroup/can_to_ros.git
-https://github.com/jmscslgroup/profproject.git
 https://github.com/jmscslgroup/cbf.git
-https://github.com/jmscslgroup/carsimplesimulink.git
+https://github.com/jmscslgroup/velocity_controller.git
+https://github.com/jmscslgroup/setpointreader.git
+https://github.com/MatthewNice/joy_to_veh.git
+https://github.com/MatthewNice/joystick_drivers.git

@@ -8,6 +8,8 @@ SHELL ["/bin/bash", "-c"]
 RUN apt-get update && apt-get install -y \
     git \
     python3-pip \
+    ros-noetic-roslint \
+    python-is-python3 \
     && rm -rf /var/lib/apt/lists/*
 
 # Create the catkin workspace and set working directory
