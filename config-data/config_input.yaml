@@ -1,0 +1,35 @@
+dependencies:
+  - apt: python3-pandas
+  - pip3: cantools
+  - pip3: shapely
+  - pip3: scipy
+  - pip3: requests
+  - pip3: pandas
+ros_repositories:
+  - owner: jmscslgroup
+    repo: can_to_ros
+  - owner: jmscslgroup
+    repo: cbf
+    branch_or_hash: original_CBF_implementation_2021
+  - owner: jmscslgroup
+    repo: velocity_controller
+  - owner: jmscslgroup
+    repo: setpointreader
+  - owner: jmscslgroup
+    repo: oneshotadder
+  - owner: jmscslgroup
+    repo: clock2seconds
+  - owner: jmscslgroup
+    repo: odometer
+  - owner: jmscslgroup
+    repo: modechanger
+  - owner: jmscslgroup
+    repo: subtractor
+  - owner: MatthewNice
+    repo: joy_to_veh
+  - owner: MatthewNice
+    repo: joystick_drivers
+  - owner: jmscslgroup
+    repo: profproject
+  - owner: MatthewNice
+    repo: gps2vsl
