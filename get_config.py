@@ -34,6 +34,8 @@ def get_all_packages() -> list:
         if not package_path.startswith(default_ros_path):
             non_default_packages.append(package)
 
+    non_default_packages.sort()
+
     return non_default_packages
 
 def find_package_path(package_name: str) -> str:
@@ -146,6 +148,8 @@ def find_nodes_in_package(pkg: str) -> list:
         pubs, subs = topics_from_node_package(e, pkg)
         nodes.append({"node": e, "publishers": pubs, "subscribers": subs}) 
 
+    nodes.sort(key = lambda x: x["node"])
+
     return nodes
 
 def find_launch_files_in_package(pkg: str) -> list:
@@ -169,6 +173,8 @@ def find_launch_files_in_package(pkg: str) -> list:
                 path = os.path.join(root, filename)
                 relative_path = os.path.relpath(path, package_path)
                 launch_files.append({"launch_file": filename, "relative_path": relative_path})
+
+    launch_files.sort(key = lambda x: x["launch_file"])
 
     return launch_files
 
