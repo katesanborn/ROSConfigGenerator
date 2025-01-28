@@ -201,7 +201,7 @@ def find_launch_files_in_package(pkg: str) -> list:
                     launch = roslaunch.parent.ROSLaunchParent(uuid, [path])
                     launch.start()
 
-                    time.sleep(5)
+                    time.sleep(2)
                     
                     nodes = rosnode.get_node_names()
                     nodes_topics = []
