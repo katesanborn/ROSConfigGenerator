@@ -4,6 +4,7 @@ import subprocess
 import os
 import rosnode
 from rosgraph.masterapi import Master
+import rosgraph.masterapi
 import rospkg
 import time
 from catkin_pkg import workspaces
@@ -152,8 +153,29 @@ def find_nodes_in_package(pkg: str) -> list:
 
     return nodes
 
+def get_node_topics(node_name: str) -> tuple:
+    """Returns the publishers and subscribers for a given node.
+
+    Args:
+        node_name (str): Name of node running
+
+    Returns:
+        tuple: (List of publishers, list of subscribers)
+    """    
+    
+    master = rosgraph.masterapi.Master('/roscore')
+    state = master.getSystemState()
+
+    publishers = [topic for topic, nodes in state[0] if node_name in nodes and "rosout" not in topic]
+    subscribers = [topic for topic, nodes in state[1] if node_name in nodes and "rosout" not in topic]
+    
+    publishers.sort()
+    subscribers.sort()
+
+    return publishers, subscribers
+
 def find_launch_files_in_package(pkg: str) -> list:
-    """Returns a list of all launch files in a package
+    """Returns a list of all launch files in a package and the nodes they launch
 
     Args:
         pkg (str): Package name
@@ -172,7 +194,36 @@ def find_launch_files_in_package(pkg: str) -> list:
             if filename.endswith('.launch'):
                 path = os.path.join(root, filename)
                 relative_path = os.path.relpath(path, package_path)
-                launch_files.append({"launch_file": filename, "relative_path": relative_path})
+                
+                try:
+                    uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
+                    roslaunch.configure_logging(uuid)
+                    launch = roslaunch.parent.ROSLaunchParent(uuid, [path])
+                    launch.start()
+
+                    time.sleep(5)
+                    
+                    nodes = rosnode.get_node_names()
+                    nodes_topics = []
+
+                    for node in nodes:
+                        if "rostopic" in node or "rosout" in node:
+                            continue
+                        
+                        pubs, subs = get_node_topics(node)
+                        
+                        node_name = node[1:] if node.startswith("/") else node
+                        
+                        nodes_topics.append({"node": node_name, "publishers": pubs, "subscribers": subs})
+                                
+                    launch.shutdown()
+                    
+                    nodes_topics.sort(key = lambda x: x["node"])
+                    
+                    launch_files.append({"launch_file": filename, "relative_path": relative_path, "nodes": nodes_topics})
+                except:
+                    launch_files.append({"launch_file": filename, "relative_path": relative_path, "nodes": []})
+                
 
     launch_files.sort(key = lambda x: x["launch_file"])
 
