@@ -508,7 +508,8 @@
                     {
                         "node": "setpointreader",
                         "publishers": [
-                            "/v_ref"
+                            "/v_ref",
+                            "/v_ref_float"
                         ],
                         "subscribers": [
                             "/msg_467"
@@ -603,7 +604,8 @@
                     {
                         "node": "setpointreader",
                         "publishers": [
-                            "/cmd_vel"
+                            "/cmd_vel",
+                            "/v_ref_float"
                         ],
                         "subscribers": [
                             "/msg_467"
@@ -1106,7 +1108,7 @@
                 "relative_path": "launch/init_ghost_mode.launch",
                 "nodes": [
                     {
-                        "node": "record_1738102078868346361",
+                        "node": "record_1750187486151935537",
                         "publishers": [],
                         "subscribers": [
                             "/acc/acc_btns",
@@ -1622,7 +1624,7 @@
                 "relative_path": "launch/unit_test_setpoint.launch",
                 "nodes": [
                     {
-                        "node": "record_1738102097120269665",
+                        "node": "record_1750187492334979131",
                         "publishers": [],
                         "subscribers": [
                             "/accel",
@@ -1915,7 +1917,8 @@
                     {
                         "node": "setpointreader",
                         "publishers": [
-                            "/cmd_vel"
+                            "/cmd_vel",
+                            "/v_ref_float"
                         ],
                         "subscribers": [
                             "/msg_467"
@@ -2058,7 +2061,8 @@
                     {
                         "node": "setpointreader",
                         "publishers": [
-                            "/v_ref"
+                            "/v_ref",
+                            "/v_ref_float"
                         ],
                         "subscribers": [
                             "/msg_467"
@@ -3207,12 +3211,657 @@
         ]
     },
     {
+        "package": "roscpp_tutorials",
+        "nodes": [
+            {
+                "node": "add_two_ints_client",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "add_two_ints_server",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "add_two_ints_server_class",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "anonymous_listener",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "babbler",
+                "publishers": [
+                    "/babble"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "cached_parameters",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "custom_callback_processing",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "listener",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "listener_async_spin",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "listener_class",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "listener_multiple",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "listener_threaded_spin",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "listener_unreliable",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "listener_with_tracked_object",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "listener_with_userdata",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "node_handle_namespaces",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "notify_connect",
+                "publishers": [
+                    "/chatter"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "parameters",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "talker",
+                "publishers": [
+                    "/chatter"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "time_api_sleep",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "timers",
+                "publishers": null,
+                "subscribers": null
+            }
+        ],
+        "launch_files": [
+            {
+                "launch_file": "talker_listener.launch",
+                "relative_path": "launch/talker_listener.launch",
+                "nodes": [
+                    {
+                        "node": "listener",
+                        "publishers": [],
+                        "subscribers": [
+                            "/chatter"
+                        ]
+                    },
+                    {
+                        "node": "talker",
+                        "publishers": [
+                            "/chatter"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "package": "rospy_tutorials",
+        "nodes": [
+            {
+                "node": "add_two_ints_client",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "add_two_ints_server",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "advanced_publish.py",
+                "publishers": [
+                    "/color"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "client_connection_header.py",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "listener",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "listener.py",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "listener_connection_header.py",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "listener_header.py",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter_header"
+                ]
+            },
+            {
+                "node": "listener_subscribe_notify.py",
+                "publishers": [
+                    "/chatter"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "listener_with_user_data.py",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter",
+                    "/chatter2"
+                ]
+            },
+            {
+                "node": "param_talker.py",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "publish_on_shutdown.py",
+                "publishers": [
+                    "/chatter"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "publish_on_shutdown_test_node.py",
+                "publishers": [
+                    "/chatter"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "publish_pointcloud2.py",
+                "publishers": [
+                    "/points2"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "server_connection_header.py",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "talker",
+                "publishers": [
+                    "/chatter"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "talker.py",
+                "publishers": [
+                    "/chatter"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "talker_connection_header.py",
+                "publishers": [
+                    "/chatter"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "talker_header.py",
+                "publishers": [
+                    "/chatter_header"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "talker_listener_test.py",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "talker_timer.py",
+                "publishers": [
+                    "/chatter"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "test_add_two_ints.py",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "test_client_connection_header.py",
+                "publishers": null,
+                "subscribers": null
+            },
+            {
+                "node": "test_listener_connection_header.py",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "test_on_shutdown.py",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "test_peer_subscribe_notify.py",
+                "publishers": [],
+                "subscribers": [
+                    "/chatter"
+                ]
+            },
+            {
+                "node": "test_server_connection_header.py",
+                "publishers": null,
+                "subscribers": null
+            }
+        ],
+        "launch_files": [
+            {
+                "launch_file": "advanced_publish.launch",
+                "relative_path": "009_advanced_publish/advanced_publish.launch",
+                "nodes": [
+                    {
+                        "node": "advanced_talker",
+                        "publishers": [
+                            "/color"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "connection_header.launch",
+                "relative_path": "007_connection_header/connection_header.launch",
+                "nodes": [
+                    {
+                        "node": "listener_ch",
+                        "publishers": [],
+                        "subscribers": [
+                            "/chatter"
+                        ]
+                    },
+                    {
+                        "node": "talker_ch",
+                        "publishers": [
+                            "/chatter"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "headers.launch",
+                "relative_path": "002_headers/headers.launch",
+                "nodes": [
+                    {
+                        "node": "listener_header",
+                        "publishers": [],
+                        "subscribers": [
+                            "/chatter_header"
+                        ]
+                    },
+                    {
+                        "node": "talker_header",
+                        "publishers": [
+                            "/chatter_header"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "listener_subscribe_notify.launch",
+                "relative_path": "004_listener_subscribe_notify/listener_subscribe_notify.launch",
+                "nodes": [
+                    {
+                        "node": "listener_1",
+                        "publishers": [],
+                        "subscribers": [
+                            "/chatter"
+                        ]
+                    },
+                    {
+                        "node": "listener_2",
+                        "publishers": [],
+                        "subscribers": [
+                            "/chatter"
+                        ]
+                    },
+                    {
+                        "node": "listener_3",
+                        "publishers": [],
+                        "subscribers": [
+                            "/chatter"
+                        ]
+                    },
+                    {
+                        "node": "listener_4",
+                        "publishers": [],
+                        "subscribers": [
+                            "/chatter"
+                        ]
+                    },
+                    {
+                        "node": "talker_notify",
+                        "publishers": [
+                            "/chatter"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "listener_with_user_data.launch",
+                "relative_path": "003_listener_with_user_data/listener_with_user_data.launch",
+                "nodes": [
+                    {
+                        "node": "listener_with_user_data",
+                        "publishers": [],
+                        "subscribers": [
+                            "/chatter",
+                            "/chatter2"
+                        ]
+                    },
+                    {
+                        "node": "talker_1",
+                        "publishers": [
+                            "/chatter1"
+                        ],
+                        "subscribers": []
+                    },
+                    {
+                        "node": "talker_2",
+                        "publishers": [
+                            "/chatter2"
+                        ],
+                        "subscribers": []
+                    },
+                    {
+                        "node": "talker_3",
+                        "publishers": [
+                            "/chatter3"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "on_shutdown.launch",
+                "relative_path": "008_on_shutdown/on_shutdown.launch",
+                "nodes": [
+                    {
+                        "node": "listener",
+                        "publishers": [],
+                        "subscribers": [
+                            "/chatter"
+                        ]
+                    },
+                    {
+                        "node": "publish_on_shutdown",
+                        "publishers": [
+                            "/chatter"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "param_talker.launch",
+                "relative_path": "006_parameters/param_talker.launch",
+                "nodes": [
+                    {
+                        "node": "foo/param_talker",
+                        "publishers": [
+                            "/foo/chatter"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "publish_pointcloud2.launch",
+                "relative_path": "010_publish_pointcloud2/publish_pointcloud2.launch",
+                "nodes": [
+                    {
+                        "node": "publish_pointcloud2",
+                        "publishers": [
+                            "/points2"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "talker_listener.launch",
+                "relative_path": "001_talker_listener/talker_listener.launch",
+                "nodes": [
+                    {
+                        "node": "listener",
+                        "publishers": [],
+                        "subscribers": [
+                            "/chatter"
+                        ]
+                    },
+                    {
+                        "node": "talker",
+                        "publishers": [
+                            "/chatter"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "test-add-two-ints-with-roscpp-server.launch",
+                "relative_path": "test/test-add-two-ints-with-roscpp-server.launch",
+                "nodes": [
+                    {
+                        "node": "a2i_server",
+                        "publishers": [],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "test-add-two-ints.launch",
+                "relative_path": "test/test-add-two-ints.launch",
+                "nodes": [
+                    {
+                        "node": "a2i_server",
+                        "publishers": [],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "test-connection-header.launch",
+                "relative_path": "test/test-connection-header.launch",
+                "nodes": [
+                    {
+                        "node": "a2i_server",
+                        "publishers": [],
+                        "subscribers": []
+                    },
+                    {
+                        "node": "talker",
+                        "publishers": [
+                            "/chatter"
+                        ],
+                        "subscribers": []
+                    },
+                    {
+                        "node": "test_client_ch",
+                        "publishers": [],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "test-on-shutdown.launch",
+                "relative_path": "test/test-on-shutdown.launch",
+                "nodes": [
+                    {
+                        "node": "pos_node",
+                        "publishers": [
+                            "/chatter"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "test-peer-subscribe-notify.launch",
+                "relative_path": "test/test-peer-subscribe-notify.launch",
+                "nodes": [
+                    {
+                        "node": "listener",
+                        "publishers": [
+                            "/chatter"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "test-talker-listener-with-roscpp.launch",
+                "relative_path": "test/test-talker-listener-with-roscpp.launch",
+                "nodes": [
+                    {
+                        "node": "talker",
+                        "publishers": [
+                            "/chatter"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "test-talker-listener-with-timer.launch",
+                "relative_path": "test/test-talker-listener-with-timer.launch",
+                "nodes": [
+                    {
+                        "node": "talker",
+                        "publishers": [
+                            "/chatter"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            },
+            {
+                "launch_file": "test-talker-listener.launch",
+                "relative_path": "test/test-talker-listener.launch",
+                "nodes": [
+                    {
+                        "node": "talker",
+                        "publishers": [
+                            "/chatter"
+                        ],
+                        "subscribers": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "package": "setpointreader",
         "nodes": [
             {
                 "node": "setpointreader",
                 "publishers": [
-                    "/v_ref"
+                    "/v_ref",
+                    "/v_ref_float"
                 ],
                 "subscribers": [
                     "/msg_467"
@@ -3236,6 +3885,48 @@
             }
         ],
         "launch_files": []
+    },
+    {
+        "package": "turtlesim",
+        "nodes": [
+            {
+                "node": "draw_square",
+                "publishers": [
+                    "/turtle1/cmd_vel"
+                ],
+                "subscribers": [
+                    "/turtle1/pose"
+                ]
+            },
+            {
+                "node": "mimic",
+                "publishers": [
+                    "/output/cmd_vel"
+                ],
+                "subscribers": [
+                    "/input/pose"
+                ]
+            },
+            {
+                "node": "turtle_teleop_key",
+                "publishers": [
+                    "/turtle1/cmd_vel"
+                ],
+                "subscribers": []
+            },
+            {
+                "node": "turtlesim_node",
+                "publishers": null,
+                "subscribers": null
+            }
+        ],
+        "launch_files": [
+            {
+                "launch_file": "multisim.launch",
+                "relative_path": "launch/multisim.launch",
+                "nodes": []
+            }
+        ]
     },
     {
         "package": "velocity_controller",

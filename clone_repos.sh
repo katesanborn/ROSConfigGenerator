@@ -4,6 +4,7 @@ YAML_FILE="/config-data/config_input.yaml"
 
 # Install APT dependencies
 echo "Installing APT dependencies..."
+apt-get update
 yq '.dependencies[] | select(.apt) | .apt' "$YAML_FILE" | while read -r package; do
     echo "Installing $package..."
     sudo apt-get install -y "$package"

@@ -1,5 +1,6 @@
 dependencies:
   - apt: python3-pandas
+  - apt: qtbase5-dev
   - pip3: cantools
   - pip3: shapely
   - pip3: scipy
@@ -33,3 +34,6 @@ ros_repositories:
     repo: profproject
   - owner: MatthewNice
     repo: gps2vsl
+  - owner: ros
+    repo: ros_tutorials
+    branch_or_hash: noetic-devel
