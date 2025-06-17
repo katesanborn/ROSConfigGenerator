@@ -33,6 +33,9 @@ RUN /root/catkin_ws/src/clone_repos.sh
 
 # Build workspace after cloning
 WORKDIR /root/catkin_ws
+RUN rosdep init || true
+RUN rosdep update --include-eol-distros
+RUN rosdep install --from-paths src --ignore-src -r -y
 RUN source /ros_entrypoint.sh && catkin_make && source devel/setup.bash
 
 # Copy Python script to get config
