@@ -1,5 +1,4 @@
 dependencies:
-  - apt: python3-pandas
   - apt: qtbase5-dev
   - pip3: cantools
   - pip3: shapely
